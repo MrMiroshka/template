@@ -14,10 +14,12 @@ public class ProductConverter {
     }
 
     public ProductDto entityToDto(Product product) {
-        return new ProductDto(product.getId(), product.getTitle(), product.getCost());
+        //return new ProductDto(product.getId(), product.getTitle(), product.getCost());
+        return new ProductDto.Builder(product.getId(), product.getTitle(), product.getCost()).buidl();
     }
 
     public ProductDto entityToDto(Optional<Product> product) {
-        return new ProductDto(product.get().getId(), product.get().getTitle(), product.get().getCost());
+       // return new ProductDto(product.get().getId(), product.get().getTitle(), product.get().getCost());
+        return new ProductDto.Builder(product.get().getId(), product.get().getTitle(), product.get().getCost()).buidl();
     }
 }

@@ -42,7 +42,8 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     public ProductDto postProduct(@RequestBody ProductDto productDto) {
         productValidator.validate(productDto);
-        productDto.setId(null);
+        //productDto.setId(null);
+        productDto = new ProductDto.Builder(null,productDto.getTitle(),productDto.getCost()).buidl();
         Product product = this.productService.addProduct(productConverter.dtoToEntity(productDto));
         return productConverter.entityToDto(product);
     }

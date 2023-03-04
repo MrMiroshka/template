@@ -7,7 +7,11 @@ import ru.miroshka.market.core.data.Order;
 @Component
 public class OrderConverter {
     public OrderDto entityToDto(Order order) {
-        return new OrderDto(order.getId(), order.getPhone(), order.getTotalPrice(), order.getAddress(), order.getCreatedAt());
+        //return new OrderDto(order.getId(), order.getPhone(), order.getTotalPrice(), order.getAddress(), order.getCreatedAt());
+        return new OrderDto.Builder(order.getId(), order.getTotalPrice(),order.getCreatedAt())
+                .setAddress(order.getAddress())
+                .setPhone(order.getPhone())
+                .buidl();
     }
 /*    public Product dtoToEntity(ProductDto productDto){
         return new Product(productDto.getId(),productDto.getTitle(),productDto.getCost(), LocalDateTime.now(),LocalDateTime.now());
