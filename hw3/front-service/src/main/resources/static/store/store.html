@@ -1,0 +1,79 @@
+<div>
+    <p></p>
+    <h3>Магазин</h3>
+    <p></p>
+    <p></p>
+    <h3>Добавить продукт</h3>
+    <p></p>
+    <form novalidate ng-submit="createProductJson()">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Имя" ng-model="newProductJson.title">
+        <p></p>
+        <input class="form-control" type="number" placeholder="Цена" ng-model="newProductJson.cost">
+        <p></p>
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+    <p></p>
+    <h3>Отфильтровать</h3>
+    <p></p>
+    <form novalidate ng-submit="loadProducts()">
+        <div class="form-floating input-group-sn">
+            <input type="text" class="form-control" id="filterName" placeholder="" ng-model="filter.name_product">
+            <label for="filterName">Название продукта</label>
+        </div>
+        <p></p>
+        <div class="form-floating input-group-sn">
+            <input type="number" class="form-control" id="filterMinCost" placeholder="" ng-model="filter.min_cost">
+            <label for="filterMinCost">Минимальная цена</label>
+        </div>
+        <p></p>
+        <div class="form-floating input-group-sn">
+            <input type="number" class="form-control" id="filterMaxCost" placeholder="" ng-model="filter.max_cost">
+            <label for="filterMaxCost">Максимальная цена</label>
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-outline-warning btn sm" style="width: 100%;">Применить</button>
+    </form>
+
+    <h3>Список продуктов</h3>
+    <table class="table table-hover">
+        <tr>
+            <td>ID</td>
+            <td>Имя продукта</td>
+            <td>Цена за штуку</td>
+            <td>Изменение</td>
+        </tr>
+        <tbody>
+        <tr ng-repeat="p in ProductsList">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.cost}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="deleteProduct(p.id)">Удалить</button>
+            </td>
+            <td>
+                <button class="btn btn-info" ng-click="aboutProduct(p.id)">Подробнее</button>
+            </td>
+            <td>
+                <button class="btn btn-success" ng-click="putBasket(p.id)">Добавить в корзину</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation products">
+        <ul class="pagination pagination-lg justify-content-center" id="pagination">
+            <li  id = "head" class="page-item">
+                <a class="page-link" tabindex="-1">Предыдущая</a>
+            </li>
+            <li  class="page-item" ng-repeat="pageIndex in pagesList">
+                <a  class="page-link">{{pageIndex}}</a>
+            </li>
+            <li id="fine" class="page-item">
+                <a  class="page-link" >Следующая</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="div_return">
+        <button class="btn btn-info" ng-click="returnProducts()" .hidden="true">Назад</button>
+    </div>
+</div>
