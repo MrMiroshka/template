@@ -5,9 +5,12 @@ import java.math.BigDecimal;
 
 public class ProductDto {
 
-    private final Long id;
-    private final String title;
-    private final BigDecimal cost;
+    private  Long id;
+    private  String title;
+    private  BigDecimal cost;
+
+    public ProductDto(){
+    }
 
     public static class Builder {
         private final Long id;
