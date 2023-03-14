@@ -1,0 +1,13 @@
+server:
+  port: 8889
+  servlet:
+    context-path: /market-carts
+ProductServiceIntegration-getProductById: http://localhost:8888/market/api/v1/products/
+integrations:
+  product-service:
+    url: http://localhost:8888/market/
+    read-timeout: 10000
+    write-timeout: 5000
+    connect-timeout: 5000
+cart-service:
+  cart-prefix: market_cart_
